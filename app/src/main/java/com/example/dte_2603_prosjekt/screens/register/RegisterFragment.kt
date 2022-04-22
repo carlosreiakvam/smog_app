@@ -35,19 +35,15 @@ class RegisterFragment : Fragment() {
             mAuth.createUserWithEmailAndPassword(
                 email,
                 password
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    FirebaseDatabase.getInstance().getReference("Users")
-                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                        .setValue(User(fullName = fullName, age = 10, email = email))
-                        .addOnCompleteListener { it1 ->
-                            if (it1.isSuccessful) {
-                                Toast.makeText(context, "Registrert", Toast.LENGTH_LONG).show()
-                            } else {
-                                Toast.makeText(context, "Noe gikk galt", Toast.LENGTH_LONG).show()
-                            }
-                        }
-                }
+            ).addOnSuccessListener {
+                val firebaseUser = mAuth.currentUser
+                val email = firebaseUser!!.email
+
+                Toast.makeText(context, "Konto med e-post $email opprettet", Toast.LENGTH_SHORT)
+                    .show()
+
+            }.addOnFailureListener {
+
             }
         }
 

@@ -11,30 +11,6 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/fullName_textview"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/full_name_textview"
-            android:inputType="text"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/age_textview"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/age_textview"
-            android:inputType="number"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fullName_textview" />
-
-        <EditText
             android:id="@+id/email_textview"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -43,8 +19,9 @@
             android:inputType="textEmailAddress"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_textview" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/password_textview"
@@ -55,22 +32,22 @@
             android:inputType="textPassword"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/age_textview" />
+            app:layout_constraintTop_toBottomOf="@+id/email_textview" />
 
         <Button
             android:id="@+id/registerButton"
             android:layout_width="300dp"
             android:layout_height="70dp"
-            android:layout_marginTop="48dp"
             android:backgroundTint="@color/black"
             android:text="@string/register_user_button"
             android:textColor="@color/white"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+            app:layout_constraintTop_toBottomOf="@+id/password_textview" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

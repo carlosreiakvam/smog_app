@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.databinding.FragmentMainScreenBinding
-import com.example.dte_2603_prosjekt.screens.login.LoginFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 
 

@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var fullName: String
     private lateinit var email: String
     private lateinit var password: String
 
@@ -28,7 +27,6 @@ class RegisterFragment : Fragment() {
 
 
         binding.registerButton.setOnClickListener {
-            fullName = binding.fullNameTextview.text.toString()
             email = binding.emailTextview.text.toString()
             password = binding.passwordTextview.text.toString()
 

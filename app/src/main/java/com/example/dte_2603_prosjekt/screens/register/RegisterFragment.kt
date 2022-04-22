@@ -26,11 +26,12 @@ class RegisterFragment : Fragment() {
         binding = FragmentRegisterBinding.inflate(inflater)
         mAuth = FirebaseAuth.getInstance();
 
-        fullName = binding.fullNameTextview.toString()
-        email = binding.emailTextview.toString()
-        password = binding.passwordTextview.toString()
 
         binding.registerButton.setOnClickListener {
+            fullName = binding.fullNameTextview.text.toString()
+            email = binding.emailTextview.text.toString()
+            password = binding.passwordTextview.text.toString()
+
             mAuth.createUserWithEmailAndPassword(
                 email,
                 password
@@ -39,8 +40,8 @@ class RegisterFragment : Fragment() {
                     FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().currentUser!!.uid)
                         .setValue(User(fullName = fullName, age = 10, email = email))
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
+                        .addOnCompleteListener { it1 ->
+                            if (it1.isSuccessful) {
                                 Toast.makeText(context, "Registrert", Toast.LENGTH_LONG).show()
                             } else {
                                 Toast.makeText(context, "Noe gikk galt", Toast.LENGTH_LONG).show()

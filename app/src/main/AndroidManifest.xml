@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dte_2603_prosjekt">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DTE2603Prosjekt">
+        android:theme="@style/Theme.DTE2603Prosjekt"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -22,7 +24,10 @@
             </intent-filter>
         </activity>
         <meta-data
-            android:name="preloaded_fonts"/>
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"
+        tools:ignore="ManifestOrder" />
 
 </manifest>

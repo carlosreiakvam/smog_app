@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.databinding.FragmentRegisterBinding
-import com.example.dte_2603_prosjekt.domain.models.User
+import com.example.dte_2603_prosjekt.screens.login.LoginFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 
 
 class RegisterFragment : Fragment() {
@@ -41,9 +41,11 @@ class RegisterFragment : Fragment() {
 
                 Toast.makeText(context, "Konto med e-post $email opprettet", Toast.LENGTH_SHORT)
                     .show()
+                findNavController().popBackStack()
 
             }.addOnFailureListener {
-
+                Toast.makeText(context, "Noe gikk galt", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 

@@ -5,11 +5,8 @@
     <string name="login_button_text">Logg inn</string>
     <string name="forgot_password_textview">Glemt passord?</string>
     <string name="register_textview">Registrer</string>
-    <string name="full_name_textview">Fullt navn</string>
-    <string name="age_textview">Alder</string>
     <string name="email_textview">E-post</string>
     <string name="password_textview">Passord</string>
     <string name="register_user_button">Registrer deg</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

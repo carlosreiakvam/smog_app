@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logget inn som:"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/show_email_textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -25,6 +26,7 @@
         <TextView
             android:id="@+id/show_email_textView"
             android:layout_width="wrap_content"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="88dp"
             android:text="E-post"

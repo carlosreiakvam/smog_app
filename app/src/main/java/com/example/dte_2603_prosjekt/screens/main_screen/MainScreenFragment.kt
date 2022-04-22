@@ -39,6 +39,7 @@ class MainScreenFragment : Fragment() {
     private fun checkUserIsLoggedIn() {
         val firebaseUser = mAuth.currentUser
         if (firebaseUser != null) {
+            binding.showEmailTextView.text = firebaseUser.email
 
         } else {
             this.findNavController()

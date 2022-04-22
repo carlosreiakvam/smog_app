@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentLoginBinding
-import com.example.dte_2603_prosjekt.screens.main_screen.MainScreenFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 
 

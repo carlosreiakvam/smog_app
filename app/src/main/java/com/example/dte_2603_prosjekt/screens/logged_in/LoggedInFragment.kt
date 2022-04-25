@@ -1,4 +1,4 @@
-package com.example.dte_2603_prosjekt.screens.main_screen
+package com.example.dte_2603_prosjekt.screens.logged_in
 
 import android.os.Bundle
 
@@ -11,7 +11,7 @@ import com.example.dte_2603_prosjekt.databinding.FragmentMainScreenBinding
 import com.google.firebase.auth.FirebaseAuth
 
 
-class MainScreenFragment : Fragment() {
+class LoggedInFragment : Fragment() {
     private lateinit var binding: FragmentMainScreenBinding
     private lateinit var mAuth: FirebaseAuth
 
@@ -42,7 +42,7 @@ class MainScreenFragment : Fragment() {
 
         } else {
             this.findNavController()
-                .navigate(MainScreenFragmentDirections.actionMainScreenFragmentToLoginFragment())
+                .navigate(LoggedInFragmentDirections.actionMainScreenFragmentToLoginFragment())
         }
     }
 

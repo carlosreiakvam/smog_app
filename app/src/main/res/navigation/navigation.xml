@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.dte_2603_prosjekt.screens.main_screen.MainScreenFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.logged_in.LoggedInFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action

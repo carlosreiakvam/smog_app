@@ -60,7 +60,7 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
     // Firebase
-    implementation 'com.google.base:firebase-auth-ktx:21.0.3'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:1.2.1"

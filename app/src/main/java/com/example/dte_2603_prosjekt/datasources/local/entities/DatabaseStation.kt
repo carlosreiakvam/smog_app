@@ -8,51 +8,47 @@ import com.example.dte_2603_prosjekt.domain.models.Station
 data class DatabaseStation(
     @PrimaryKey
     val eoi: String,
-    val grunnkrets: String,
+    val groundarea: Groundarea,
     val height: Long,
     val latitude: Long,
     val name: String,
-    val delomrade: String,
+    val subarea: Subarea,
     val longitude: Long,
-    val kommune: String,
+    val municipality: Municipality,
 
 
     )
 
-@Entity(tableName = "grunnkrets")
-data class Grunnkrets(
+@Entity(tableName = "groundarea")
+data class Groundarea(
     @field:PrimaryKey val name: String,
     val areacode: Long
 )
 
-@Entity(tableName = "kommune")
-data class Kommune(
+@Entity(tableName = "municipality")
+data class Municipality(
     @field:PrimaryKey val name: String,
     val areacode: Long
 )
 
-@Entity(tableName = "delomrade")
-data class Delomrade(
+@Entity(tableName = "subarea")
+data class Subarea(
     @field:PrimaryKey val name: String,
     val areacode: Long
 )
 
 
-fun List<DatabaseStation>.asDomainDatapoints(): List<Station> {
+fun List<DatabaseStation>.asDomainStations(): List<Station> {
     return map {
         Station(
-            grunnkrets = it.grunnkrets,
+            groundarea = it.groundarea,
             height = it.height,
             eoi = it.eoi,
             latitude = it.latitude,
             name = it.name,
-            delomrade = it.delomrade,
+            subarea = it.subarea,
             longitude = it.longitude,
-            kommune = it.kommune,
+            municipality = it.municipality,
         )
     }
-}
-
-enum class Areaclass {
-    DELOMRAADE, FYLKE, GRUNNKRETS, KOMMUNE
 }

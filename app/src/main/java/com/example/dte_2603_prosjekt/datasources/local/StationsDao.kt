@@ -9,10 +9,10 @@ import com.example.dte_2603_prosjekt.datasources.local.entities.DatabaseStation
 
 @Dao
 interface StationsDao {
-    @Query("select * from databasestation")
+    @Query("select * from stations")
     fun getDatapoints(): List<DatabaseStation>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(datapoints: List<DatabaseStation>): List<Long>
+    fun insertAll(stations: List<DatabaseStation>): List<Long>
 
 }

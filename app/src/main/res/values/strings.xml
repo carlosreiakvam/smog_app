@@ -8,5 +8,7 @@
     <string name="email_textview">E-post</string>
     <string name="password_textview">Passord</string>
     <string name="register_user_button">Registrer deg</string>
-
+    <string name="reset_password">Tilbakestill passord</string>
+    <string name="cancel">Avbryt</string>
+    <string name="reset">Tilbakestill</string>
 </resources>

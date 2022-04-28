@@ -9,6 +9,7 @@ import com.example.dte_2603_prosjekt.domain.models.PositionalData
 import com.example.dte_2603_prosjekt.domain.models.Station
 import com.example.dte_2603_prosjekt.network.AirQualityApi
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.lang.Exception
 
 class AirQualityViewModel : ViewModel() {
@@ -29,9 +30,9 @@ class AirQualityViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 _stations.value = AirQualityApi.retrofitService.getStations()
-                Log.d("kreps32", "Successfully ran getAllStations()")
+                Timber.d("Successfully ran getAllStations()")
             } catch (e: Exception) {
-                Log.d("kreps32", e.message.toString())
+                Timber.d(e.message.toString())
             }
         }
     }
@@ -42,10 +43,10 @@ class AirQualityViewModel : ViewModel() {
             try {
                 _positionalData.value = AirQualityApi.retrofitService
                     .getPositionalData(60.0, 10.0)
-                Log.d("kreps32", "Positional data: ${positionalData}")
-                Log.d("kreps32", "Successfully ran getPositionalData()")
+                Timber.d("Positional data: " + positionalData)
+                Timber.d("Successfully ran getPositionalData()")
             } catch (e: Exception) {
-                Log.d("kreps32", e.message.toString())
+                Timber.d(e.message.toString())
             }
         }
     }

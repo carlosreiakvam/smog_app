@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentMainScreenBinding
 import com.example.dte_2603_prosjekt.screens.auth.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -25,8 +28,12 @@ class LoggedInFragment : Fragment() {
         binding = FragmentMainScreenBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
-
         binding.viewModel = viewModel
+        val btnSeLuftkvalitet = binding.btnSeLuftkvalitet
+        val action = LoggedInFragmentDirections.actionMainScreenFragmentToMapFragment()
+        btnSeLuftkvalitet.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(action)
+        }
 
         viewModel.currentUser.observe(viewLifecycleOwner) {
             if (null == it) {

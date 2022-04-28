@@ -7,6 +7,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.MainScreenFragment">
 
+    <data>
+
+        <variable
+            name="airQualityViewModel"
+            type="com.example.dte_2603_prosjekt.screens.AirQualityViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

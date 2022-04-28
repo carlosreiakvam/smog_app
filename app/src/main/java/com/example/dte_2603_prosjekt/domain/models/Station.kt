@@ -12,6 +12,7 @@ import kotlinx.parcelize.RawValue
 //Subarea = delområde
 //Municipality = kommune
 
+//TODO: endre Long til Double
 @Parcelize
 data class Station(
     val groundarea: @RawValue Groundarea,

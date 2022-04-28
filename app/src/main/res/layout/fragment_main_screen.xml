@@ -7,6 +7,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.MainScreenFragment">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dte_2603_prosjekt.screens.auth.AuthViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="88dp"
-            android:text="E-post"
+            android:text="@{viewModel.currentUser.email}"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/logout_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +46,7 @@
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.logout()}"
             android:text="Logg ut"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

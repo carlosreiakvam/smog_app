@@ -33,9 +33,16 @@
         <action
             android:id="@+id/action_mainScreenFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.dte_2603_prosjekt.screens.map.MapFragment"
         android:label="MapFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.about.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

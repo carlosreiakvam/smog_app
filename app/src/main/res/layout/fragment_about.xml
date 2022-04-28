@@ -5,28 +5,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:textSize="40sp">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Denne appen er laget av" />
+            android:text="Denne appen er laget av"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thomas Melchior Ytterdahl" />
+            android:text="Thomas Melchior Ytterdahl"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fredrik Jørgensen Olsen" />
+            android:text="Fredrik Jørgensen Olsen"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Carlos Reiakvam" />
+            android:text="Carlos Reiakvam"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

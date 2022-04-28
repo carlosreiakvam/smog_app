@@ -59,6 +59,12 @@ class LoggedInFragment : Fragment() {
                 )
                 return true
             }
+            R.id.menu_item_settings -> {
+                this.findNavController().navigate(
+                    LoggedInFragmentDirections.actionMainScreenFragmentToPreferenceFragment()
+                )
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -1,5 +1,4 @@
 package com.example.dte_2603_prosjekt.network
-
 import com.example.dte_2603_prosjekt.domain.models.PositionalData
 import com.example.dte_2603_prosjekt.domain.models.Station
 import com.squareup.moshi.Moshi

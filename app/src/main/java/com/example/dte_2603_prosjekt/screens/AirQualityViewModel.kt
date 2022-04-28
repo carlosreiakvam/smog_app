@@ -29,9 +29,9 @@ class AirQualityViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 _stations.value = AirQualityApi.retrofitService.getStations()
-                Log.d("cre032", "Successfully ran getAllStations()")
+                Log.d("kreps32", "Successfully ran getAllStations()")
             } catch (e: Exception) {
-                Log.d("cre032", e.message.toString())
+                Log.d("kreps32", e.message.toString())
             }
         }
     }
@@ -42,10 +42,10 @@ class AirQualityViewModel : ViewModel() {
             try {
                 _positionalData.value = AirQualityApi.retrofitService
                     .getPositionalData(60.0, 10.0)
-                Log.d("cre032", positionalData.toString())
-                Log.d("cre032", "Successfully ran getPositionalData()")
+                Log.d("kreps32", "Positional data: ${positionalData}")
+                Log.d("kreps32", "Successfully ran getPositionalData()")
             } catch (e: Exception) {
-                Log.d("cre032", e.message.toString())
+                Log.d("kreps32", e.message.toString())
             }
         }
     }

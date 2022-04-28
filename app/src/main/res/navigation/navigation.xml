@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.dte_2603_prosjekt.screens.login.LoginFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.auth.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,12 +19,12 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.dte_2603_prosjekt.screens.register.RegisterFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.auth.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.dte_2603_prosjekt.screens.logged_in.LoggedInFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.auth.logged_in.LoggedInFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action

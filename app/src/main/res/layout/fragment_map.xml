@@ -8,9 +8,10 @@
             type="com.example.dte_2603_prosjekt.screens.AirQualityViewModel" />
     </data>
 
-    <TextView
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="JOHOO" />
+        android:layout_height="wrap_content" />
+
 
 </layout>

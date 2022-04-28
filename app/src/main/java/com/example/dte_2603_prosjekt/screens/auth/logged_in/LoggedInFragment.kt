@@ -29,6 +29,8 @@ class LoggedInFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        // Handle buttton for going to MapFragment
         val btnSeLuftkvalitet = binding.btnSeLuftkvalitet
         val action = LoggedInFragmentDirections.actionMainScreenFragmentToMapFragment()
         btnSeLuftkvalitet.setOnClickListener {

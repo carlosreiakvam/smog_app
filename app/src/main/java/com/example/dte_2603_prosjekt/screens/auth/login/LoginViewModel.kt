@@ -2,7 +2,6 @@ package com.example.dte_2603_prosjekt.screens.auth
 
 import android.app.Application
 import android.text.TextUtils
-import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -20,11 +19,10 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(
+class LoginViewModel @Inject constructor(
     private val application: Application,
     private val repository: AuthRepository
 ) : ViewModel() {
-
 
     private val _firebaseUser = MutableLiveData<FirebaseUser?>()
     private val _email = MutableLiveData<String>()
@@ -53,53 +51,6 @@ class AuthViewModel @Inject constructor(
                                     Toast.makeText(
                                         application,
                                         "Feil brukernavn eller passord!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                                else -> {
-                                    Toast.makeText(
-                                        application,
-                                        "Noe gikk galt",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-
-                        }
-                    }
-                } catch (e: Exception) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(application, e.message, Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-            }
-        }
-    }
-
-    fun registerUser() {
-        if (!checkInput()) {
-            Timber.d("Checkinput failed")
-            return
-        } else {
-            viewModelScope.launch(Dispatchers.IO) {
-                try {
-                    repository.signUpWithEmailPassword(email.value!!, password.value!!).collect {
-                        withContext(Dispatchers.Main) {
-                            when (it) {
-                                is Response.Success -> {
-                                    _firebaseUser.postValue(repository.getCurrentUser())
-                                    Toast.makeText(
-                                        application,
-                                        "Konto med e-post $email opprettet",
-                                        Toast.LENGTH_SHORT
-                                    )
-                                        .show()
-                                }
-                                is Response.Error -> {
-                                    Toast.makeText(
-                                        application,
-                                        "Noe gikk galt",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -160,11 +111,6 @@ class AuthViewModel @Inject constructor(
 
             }
         }
-    }
-
-    fun logout() {
-        repository.signOut()
-        _firebaseUser.postValue(repository.getCurrentUser())
     }
 
     private fun checkInput(): Boolean {

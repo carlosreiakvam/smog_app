@@ -8,11 +8,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentDialogResetPasswordBinding
-import com.example.dte_2603_prosjekt.screens.auth.AuthViewModel
+import com.example.dte_2603_prosjekt.screens.auth.LoginViewModel
 
 class ResetPasswordDialogFragment : DialogFragment() {
 
-    private val viewModel: AuthViewModel by activityViewModels()
+    private val viewModel: LoginViewModel by activityViewModels()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = FragmentDialogResetPasswordBinding.inflate(layoutInflater)

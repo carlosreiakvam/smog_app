@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.dte_2603_prosjekt.screens.auth.AuthViewModel" />
+            type="com.example.dte_2603_prosjekt.screens.auth.RegisterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -8,14 +8,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentLoginBinding
-import com.example.dte_2603_prosjekt.screens.auth.AuthViewModel
+import com.example.dte_2603_prosjekt.screens.auth.LoginViewModel
 import com.example.dte_2603_prosjekt.screens.auth.reset_pass.ResetPasswordDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private val viewModel: AuthViewModel by activityViewModels()
+    private val viewModel: LoginViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

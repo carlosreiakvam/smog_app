@@ -5,19 +5,16 @@ import android.view.*
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentMainScreenBinding
-import com.example.dte_2603_prosjekt.screens.auth.AuthViewModel
-import com.google.firebase.auth.FirebaseAuth
-import java.util.zip.Inflater
+import com.example.dte_2603_prosjekt.screens.auth.LoggedInViewModel
 
 
 class LoggedInFragment : Fragment() {
     private lateinit var binding: FragmentMainScreenBinding
-    private val viewModel: AuthViewModel by activityViewModels()
+    private val viewModel: LoggedInViewModel by activityViewModels()
 
 
     override fun onCreateView(

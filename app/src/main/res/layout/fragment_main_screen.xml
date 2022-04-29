@@ -25,10 +25,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/show_email_textView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.773" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/show_email_textView"
@@ -37,23 +34,31 @@
             android:layout_marginBottom="88dp"
             android:text="@{viewModel.currentUser.email}"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/logout_button"
+            app:layout_constraintBottom_toTopOf="@+id/btn_se_luftkvalitet"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_se_luftkvalitet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Se luftkvalitet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/logout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:onClick="@{() -> viewModel.logout()}"
             android:text="Logg ut"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.499" />
+            app:layout_constraintTop_toBottomOf="@id/btn_se_luftkvalitet" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,5 +30,27 @@
         <action
             android:id="@+id/action_mainScreenFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_preferenceFragment"
+            app:destination="@id/preferenceFragment" />
+        <action
+            android:id="@+id/action_mainScreenFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.about.AboutFragment"
+        android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/preferenceFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.settings.PreferenceFragment"
+        android:label="PreferenceFragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.map.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

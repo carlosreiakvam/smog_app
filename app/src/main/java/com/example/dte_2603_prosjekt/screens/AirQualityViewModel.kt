@@ -25,6 +25,7 @@ class AirQualityViewModel : ViewModel() {
         getPositionalData()
     }
 
+    // TODO: Bytt ut long med double i model for Station for at denne kan virke
     private fun getAllStations() {
         viewModelScope.launch {
             try {
@@ -36,7 +37,7 @@ class AirQualityViewModel : ViewModel() {
         }
     }
 
-    //TODO: Hardcodede verdier for testing inntil videre. Bytt ut senere
+    //TODO: Hardcodede verdier for testing. Bytt senere
     private fun getPositionalData() {
         viewModelScope.launch {
             try {

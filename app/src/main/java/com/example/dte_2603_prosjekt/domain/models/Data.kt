@@ -17,7 +17,7 @@ data class Variables(
     val AQI: Variable,
     val no2_concentration: Variable,
     val AQI_no2: Variable,
-    // Variabler under blir foreløppig ikke godtatt av spørringene våre
+    //TODO Variabler under blir foreløppig ikke godtatt av spørringene vi har så langt
 //    val no2_nonlocal_fraction: Variable,
 //    val no2_nonlocal_fraction_seasalt: Variable,
 //    val no2_local_fraction_traffic_exhaust: Variable,

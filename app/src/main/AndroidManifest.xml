@@ -4,6 +4,9 @@
     package="com.example.dte_2603_prosjekt">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="com.google.android.c2dm.permission.RECEIVE"
+        tools:ignore="ManifestOrder" />
 
     <application
         android:name=".SmogApplication"
@@ -15,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DTE2603Prosjekt"
         android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCIJ30-bkIYqt7ccDVbU62GhyEYrNf7lJc" />
+        <!--        value = api key-->
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,11 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"
-        tools:ignore="ManifestOrder" />
 
 </manifest>

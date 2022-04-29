@@ -31,7 +31,7 @@ class LoggedInFragment : Fragment() {
 
         // Handle buttton for going to MapFragment
         val btnSeLuftkvalitet = binding.btnSeLuftkvalitet
-        val action = LoggedInFragmentDirections.actionMainScreenFragmentToMapFragment()
+        val action = LoggedInFragmentDirections.actionMainScreenFragmentToMapsFragment()
         btnSeLuftkvalitet.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(action)
         }

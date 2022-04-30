@@ -13,23 +13,23 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_save_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lagre" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_save_location"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Lagre" />-->
 
-            <Button
-                android:id="@+id/btn_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Filter" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_filter"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Filter" />-->
 
-            <Button
-                android:id="@+id/btn_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Detaljer" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_details"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Detaljer" />-->
 
         </LinearLayout>
 

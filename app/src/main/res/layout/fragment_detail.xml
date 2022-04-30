@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    Må være shared viewmodel for å fungere?-->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dte_2603_prosjekt.screens.AirQualityViewModel" />
+    </data>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dette er fragment_detail.xml" />
+
+</layout>

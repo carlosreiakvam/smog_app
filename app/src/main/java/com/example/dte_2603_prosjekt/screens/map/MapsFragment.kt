@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentMapsBinding
+import com.example.dte_2603_prosjekt.screens.auth.logged_in.LoggedInFragmentDirections
 
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -41,6 +45,19 @@ class MapsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMapsBinding.inflate(inflater)
+        val btn_Details = binding.btnDetails
+        val btn_Save = binding.btnSaveLocation
+
+        btn_Details.setOnClickListener {
+            val action = MapsFragmentDirections.actionMapsFragmentToDetailsFragment()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
+        btn_Save.setOnClickListener {
+            val action = MapsFragmentDirections.actionMapsFragmentToSaveFragment()
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
         return binding.root
     }
 

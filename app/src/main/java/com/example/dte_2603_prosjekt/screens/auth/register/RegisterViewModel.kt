@@ -4,6 +4,7 @@ import android.app.Application
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,9 +30,14 @@ class RegisterViewModel @Inject constructor(
     private val _email = MutableLiveData<String>()
     private val _password = MutableLiveData<String>()
 
-    val currentUser get() = _firebaseUser
-    val email get() = _email
-    val password get() = _password
+    val currentUser: LiveData<FirebaseUser?>
+        get() = _firebaseUser
+
+    val email: LiveData<String>
+        get() = _email
+
+    val password: LiveData<String>
+        get() = _password
 
     init {
         _firebaseUser.value = repository.getCurrentUser()
@@ -83,6 +89,14 @@ class RegisterViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun onEmailChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+       _email.postValue(s as String?)
+    }
+
+    fun onPasswordChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        _password.postValue(s as String?)
     }
 
 

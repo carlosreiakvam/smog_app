@@ -1,4 +1,4 @@
-package com.example.dte_2603_prosjekt.domain.models
+package com.example.dte_2603_prosjekt.datasources.remote.models
 
 
 data class PositionalData(

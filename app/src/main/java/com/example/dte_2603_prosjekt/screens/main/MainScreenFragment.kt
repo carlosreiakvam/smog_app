@@ -1,4 +1,4 @@
-package com.example.dte_2603_prosjekt.screens.auth.logged_in
+package com.example.dte_2603_prosjekt.screens.main
 
 import android.os.Bundle
 import android.view.*
@@ -9,12 +9,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentMainScreenBinding
-import com.example.dte_2603_prosjekt.screens.auth.LoggedInViewModel
+import com.example.dte_2603_prosjekt.screens.auth.MainScreenViewModel
 
 
-class LoggedInFragment : Fragment() {
+class MainScreenFragment : Fragment() {
     private lateinit var binding: FragmentMainScreenBinding
-    private val viewModel: LoggedInViewModel by activityViewModels()
+    private val viewModel: MainScreenViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class LoggedInFragment : Fragment() {
 
         // Handle buttton for going to MapFragment
         val btnSeLuftkvalitet = binding.btnSeLuftkvalitet
-        val action = LoggedInFragmentDirections.actionMainScreenFragmentToMapsFragment()
+        val action = MainScreenFragmentDirections.actionMainScreenFragmentToMapsFragment()
         btnSeLuftkvalitet.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(action)
         }
@@ -36,7 +36,7 @@ class LoggedInFragment : Fragment() {
         viewModel.currentUser.observe(viewLifecycleOwner) {
             if (null == it) {
                 findNavController()
-                    .navigate(LoggedInFragmentDirections.actionMainScreenFragmentToLoginFragment())
+                    .navigate(MainScreenFragmentDirections.actionMainScreenFragmentToLoginFragment())
             }
         }
 
@@ -52,13 +52,13 @@ class LoggedInFragment : Fragment() {
         return when (item.itemId) {
             R.id.menu_item_about -> {
                 this.findNavController().navigate(
-                    LoggedInFragmentDirections.actionMainScreenFragmentToAboutFragment()
+                    MainScreenFragmentDirections.actionMainScreenFragmentToAboutFragment()
                 )
                 return true
             }
             R.id.menu_item_settings -> {
                 this.findNavController().navigate(
-                    LoggedInFragmentDirections.actionMainScreenFragmentToPreferenceFragment()
+                    MainScreenFragmentDirections.actionMainScreenFragmentToPreferenceFragment()
                 )
                 return true
             }

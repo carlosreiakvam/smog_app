@@ -1,4 +1,4 @@
-package com.example.dte_2603_prosjekt.domain.models
+package com.example.dte_2603_prosjekt.datasources.remote.models
 
 // basert på spørring med url
 // http://10.239.120.166/weatherapi/airqualityforecast/0.1/?lat=60&lon=10&areaclass=grunnkrets

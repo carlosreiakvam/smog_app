@@ -1,39 +1,32 @@
 package com.example.dte_2603_prosjekt.screens.map
 
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.view.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentMapsBinding
-
+import com.example.dte_2603_prosjekt.domain.model.Station
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.MapsInitializer
-import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.clustering.ClusterManager
+import com.google.maps.android.collections.MarkerManager
+import com.google.maps.android.ktx.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class MapsFragment : Fragment() {
-
-    private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        val startLocation = LatLng(60.164834, 10.264241)
-        val zoom = 10f
-        googleMap.addMarker(MarkerOptions().position(startLocation).title("Start Location!"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startLocation, zoom))
-    }
-
+    private val viewModel: MapsViewModel by activityViewModels()
     private lateinit var binding: FragmentMapsBinding
+    private lateinit var clusterManager: ClusterManager<Station>
+    private val startLocation = LatLng(59.911491, 10.757933)
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,14 +35,44 @@ class MapsFragment : Fragment() {
     ): View {
         binding = FragmentMapsBinding.inflate(inflater)
         setHasOptionsMenu(true)
+        val isRestore = savedInstanceState != null
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        lifecycle.coroutineScope.launchWhenCreated {
+            val googleMap = mapFragment.awaitMap()
+            if (!isRestore) {
+                googleMap.awaitMapLoad()
+                googleMap.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        startLocation,
+                        10F
+                    )
+                )
+            }
+            showMapLayers(googleMap)
+            setupMapBindings()
+        }
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+    private fun showMapLayers(map: GoogleMap) {
+        val markerManager = MarkerManager(map)
+
+        addClusters(map, markerManager)
     }
+
+    private fun setupMapBindings() {
+        viewModel.stations.observe(viewLifecycleOwner) {
+            clusterManager.addItems(it)
+        }
+    }
+
+    private fun addClusters(map: GoogleMap, markerManager: MarkerManager) {
+        clusterManager = ClusterManager<Station>(requireContext(), map, markerManager)
+        map.setOnCameraIdleListener(clusterManager)
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.maps_toolbar_menu, menu)
@@ -73,3 +96,4 @@ class MapsFragment : Fragment() {
         }
     }
 }
+

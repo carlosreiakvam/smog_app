@@ -1,54 +1,51 @@
 package com.example.dte_2603_prosjekt.datasources.local.entities
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.dte_2603_prosjekt.domain.models.Station
+import com.example.dte_2603_prosjekt.domain.model.Station
+import com.example.dte_2603_prosjekt.domain.model.SubArea
 
 @Entity(tableName = "stations")
 data class DatabaseStation(
     @PrimaryKey
     val eoi: String,
-    val groundarea: Groundarea,
-    val height: Long,
-    val latitude: Long,
     val name: String,
-    val subarea: Subarea,
-    val longitude: Long,
-    val municipality: Municipality,
-
-
-    )
-
-@Entity(tableName = "groundarea")
-data class Groundarea(
-    @field:PrimaryKey val name: String,
-    val areacode: Long
+    val height: Double,
+    val latitude: Double,
+    val longitude: Double,
+    @Embedded(prefix = "ground_area")
+    val groundArea: DatabaseSubArea,
+    @Embedded(prefix = "sub_area")
+    val subarea: DatabaseSubArea,
+    @Embedded(prefix = "municipality")
+    val municipality: DatabaseSubArea,
 )
 
-@Entity(tableName = "municipality")
-data class Municipality(
-    @field:PrimaryKey val name: String,
-    val areacode: Long
-)
-
-@Entity(tableName = "subarea")
-data class Subarea(
-    @field:PrimaryKey val name: String,
-    val areacode: Long
-)
+data class DatabaseSubArea(
+    val name: String,
+    val areacode: String
+) {
+    fun asDomainSubArea(): SubArea {
+        return SubArea(
+            name = this.name,
+            areacode = this.areacode
+        )
+    }
+}
 
 
 fun List<DatabaseStation>.asDomainStations(): List<Station> {
     return map {
         Station(
-            groundarea = it.groundarea,
+            groundArea = it.groundArea.asDomainSubArea(),
             height = it.height,
             eoi = it.eoi,
             latitude = it.latitude,
             name = it.name,
-            subarea = it.subarea,
+            subarea = it.subarea.asDomainSubArea(),
             longitude = it.longitude,
-            municipality = it.municipality,
+            municipality = it.municipality.asDomainSubArea(),
         )
     }
 }

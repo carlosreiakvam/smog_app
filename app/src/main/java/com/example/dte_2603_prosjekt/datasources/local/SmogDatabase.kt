@@ -6,7 +6,6 @@ import androidx.room.TypeConverters
 import com.example.dte_2603_prosjekt.datasources.local.entities.DatabaseStation
 
 @Database(entities = [DatabaseStation::class], version = 1)
-@TypeConverters(Converters::class)
 abstract class SmogDatabase : RoomDatabase() {
     abstract val smogDao: SmogDao
 }

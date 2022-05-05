@@ -1,5 +1,6 @@
 package com.example.dte_2603_prosjekt.di
 
+import com.example.dte_2603_prosjekt.network.AirQualityApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -7,8 +8,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
 /**
  * A Hilt module is a class that is annotated with @Module..
@@ -17,11 +20,16 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  * til viewmodel-objektet.
  */
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 class RetrofitModule {
 
     @Provides
-    @ViewModelScoped
+    fun provideAirQualityService(retrofit: Retrofit): AirQualityApiService {
+        return retrofit.create(AirQualityApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun provideRetrofit(): Retrofit {
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())

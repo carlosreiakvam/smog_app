@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_mapsFragment_to_saveFragment"
             app:destination="@id/saveFragment" />
+        <action
+            android:id="@+id/action_mapsFragment_to_CameraFragment"
+            app:destination="@id/CameraFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -68,4 +71,9 @@
         android:id="@+id/saveFragment"
         android:name="com.example.dte_2603_prosjekt.screens.save.SaveFragment"
         android:label="SaveFragment" />
+    <fragment
+        android:id="@+id/CameraFragment"
+        android:name="com.example.dte_2603_prosjekt.screens.camera.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
 </navigation>

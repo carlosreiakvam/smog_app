@@ -46,6 +46,7 @@ class MapsFragment : Fragment() {
                     )
                 )
             }
+
             showMapLayers(googleMap)
             setupMapBindings()
         }
@@ -79,6 +80,13 @@ class MapsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.menu_item_take_picture -> {
+                this.findNavController().navigate(
+                    MapsFragmentDirections.actionMapsFragmentToCameraFragment()
+                )
+                return true
+            }
+
             R.id.menu_item_save -> {
                 this.findNavController().navigate(
                     MapsFragmentDirections.actionMapsFragmentToSaveFragment()
@@ -94,5 +102,7 @@ class MapsFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }
 

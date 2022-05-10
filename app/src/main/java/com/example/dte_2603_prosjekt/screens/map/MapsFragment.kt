@@ -26,7 +26,6 @@ class MapsFragment : Fragment() {
     private lateinit var binding: FragmentMapsBinding
     private lateinit var clusterManager: ClusterManager<Station>
     private val startLocation = LatLng(59.911491, 10.757933)
-    val REQUEST_IMAGE_CAPTURE = 1
 
 
     override fun onCreateView(
@@ -83,8 +82,8 @@ class MapsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_item_take_picture -> {
-                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivity(cameraIntent)
+
+
                 return true
             }
 

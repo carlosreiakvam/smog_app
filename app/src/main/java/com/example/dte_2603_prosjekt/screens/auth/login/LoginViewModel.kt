@@ -1,4 +1,4 @@
-package com.example.dte_2603_prosjekt.screens.auth
+package com.example.dte_2603_prosjekt.screens.auth.login
 
 import android.app.Application
 import android.text.TextUtils
@@ -11,10 +11,8 @@ import com.example.dte_2603_prosjekt.domain.model.Response
 import com.example.dte_2603_prosjekt.repository.AuthRepository
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -41,35 +39,19 @@ class LoginViewModel @Inject constructor(
             Timber.d("Checkinput failed")
             return
         } else {
-            viewModelScope.launch(Dispatchers.IO) {
-                try {
-                    repository.signInWithEmailPassword(email.value!!, password.value!!).collect {
-                        withContext(Dispatchers.Main) {
-                            when (it) {
-                                is Response.Success -> _firebaseUser.postValue(repository.getCurrentUser())
-                                is Response.Error -> {
-                                    Toast.makeText(
-                                        application,
-                                        "Feil brukernavn eller passord!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                                else -> {
-                                    Toast.makeText(
-                                        application,
-                                        "Noe gikk galt",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-
+            viewModelScope.launch {
+                repository.signInWithEmailPassword(email.value!!, password.value!!).collect {
+                    when (it) {
+                        is Response.Loading -> Unit
+                        is Response.Success -> _firebaseUser.postValue(repository.getCurrentUser())
+                        is Response.Error -> {
+                            Toast.makeText(
+                                application,
+                                "Feil brukernavn eller passord!",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
-                } catch (e: Exception) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(application, e.message, Toast.LENGTH_SHORT).show()
-                    }
-
                 }
             }
         }
@@ -77,38 +59,21 @@ class LoginViewModel @Inject constructor(
 
     fun resetPassword(email: String) {
         Timber.d(email)
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                repository.sendResetPassword(email).collect {
-                    withContext(Dispatchers.Main) {
-                        when (it) {
-                            is Response.Success -> {
-                                Toast.makeText(
-                                    application,
-                                    "Opprettings e-post send til: $email",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-                            }
-                            is Response.Error -> {
-                                Toast.makeText(
-                                    application,
-                                    "Noe gikk galt",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            else -> {
-                                Timber.d("else")
-                            }
-                        }
-
+        viewModelScope.launch {
+            repository.sendResetPassword(email).collect {
+                when (it) {
+                    is Response.Loading -> Unit
+                    is Response.Success -> {
+                        Toast.makeText(
+                            application,
+                            "Opprettings e-post send til: $email",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    is Response.Error -> {
+                        Toast.makeText(application, "Noe gikk galt", Toast.LENGTH_SHORT).show()
                     }
                 }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(application, e.message, Toast.LENGTH_SHORT).show()
-                }
-
             }
         }
     }

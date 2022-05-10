@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentDialogResetPasswordBinding
-import com.example.dte_2603_prosjekt.screens.auth.LoginViewModel
+import com.example.dte_2603_prosjekt.screens.auth.login.LoginViewModel
 
 class ResetPasswordDialogFragment : DialogFragment() {
 

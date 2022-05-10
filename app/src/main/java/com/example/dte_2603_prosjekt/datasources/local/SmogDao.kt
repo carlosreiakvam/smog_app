@@ -1,9 +1,7 @@
 package com.example.dte_2603_prosjekt.datasources.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.example.dte_2603_prosjekt.datasources.local.entities.DatabaseAQIDescription
 import com.example.dte_2603_prosjekt.datasources.local.entities.DatabaseStation
 
 
@@ -12,7 +10,14 @@ interface SmogDao {
     @Query("select * from stations")
     fun getStations(): List<DatabaseStation>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllStations(stations: List<DatabaseStation>): List<Long>
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(stations: List<DatabaseStation>): List<Long>
+    fun insertAllAQIDescriptions(descriptions: List<DatabaseAQIDescription>): List<Long>
+
+    @Transaction
+    @Query("select * from aqi_description")
+    fun getAQIDescriptions(): List<DatabaseAQIDescription>
 }

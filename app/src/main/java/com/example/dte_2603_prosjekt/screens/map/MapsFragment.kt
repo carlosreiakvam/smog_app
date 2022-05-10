@@ -1,8 +1,6 @@
 package com.example.dte_2603_prosjekt.screens.map
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -82,8 +80,9 @@ class MapsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_item_take_picture -> {
-
-
+                this.findNavController().navigate(
+                    MapsFragmentDirections.actionMapsFragmentToCameraFragment()
+                )
                 return true
             }
 

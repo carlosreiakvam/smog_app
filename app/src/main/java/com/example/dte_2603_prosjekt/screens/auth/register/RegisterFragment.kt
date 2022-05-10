@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.databinding.FragmentRegisterBinding
-import com.example.dte_2603_prosjekt.screens.auth.RegisterViewModel
 
 
 class RegisterFragment : Fragment() {

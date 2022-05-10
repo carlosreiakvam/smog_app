@@ -18,7 +18,6 @@ import com.google.maps.android.collections.MarkerManager
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.awaitMapLoad
 
-
 class MapsFragment : Fragment() {
     private val viewModel: MapsViewModel by activityViewModels()
     private lateinit var binding: FragmentMapsBinding
@@ -63,7 +62,9 @@ class MapsFragment : Fragment() {
 
     private fun setupMapBindings() {
         viewModel.stations.observe(viewLifecycleOwner) {
+            clusterManager.clearItems()
             clusterManager.addItems(it)
+            clusterManager.cluster()
         }
     }
 

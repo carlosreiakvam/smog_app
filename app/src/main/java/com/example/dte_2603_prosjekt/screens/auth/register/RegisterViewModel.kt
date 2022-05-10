@@ -1,4 +1,4 @@
-package com.example.dte_2603_prosjekt.screens.auth
+package com.example.dte_2603_prosjekt.screens.auth.register
 
 import android.app.Application
 import android.text.TextUtils
@@ -92,7 +92,7 @@ class RegisterViewModel @Inject constructor(
     }
 
     fun onEmailChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-       _email.postValue(s as String?)
+        _email.postValue(s as String?)
     }
 
     fun onPasswordChanged(s: CharSequence, start: Int, before: Int, count: Int) {

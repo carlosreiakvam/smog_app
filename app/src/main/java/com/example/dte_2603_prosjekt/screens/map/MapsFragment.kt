@@ -15,11 +15,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.MarkerManager
-import com.google.maps.android.ktx.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.launch
-import timber.log.Timber
+import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.awaitMapLoad
 
 class MapsFragment : Fragment() {
     private val viewModel: MapsViewModel by activityViewModels()
@@ -64,7 +61,9 @@ class MapsFragment : Fragment() {
 
     private fun setupMapBindings() {
         viewModel.stations.observe(viewLifecycleOwner) {
+            clusterManager.clearItems()
             clusterManager.addItems(it)
+            clusterManager.cluster()
         }
     }
 

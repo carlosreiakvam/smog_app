@@ -41,18 +41,28 @@ class MainScreenViewModel @Inject constructor(
     }
 
     fun refreshStations() {
-        viewModelScope.launch(Dispatchers.IO) {
+        Timber.d("Refresh stations")
+        viewModelScope.launch {
             try {
                 airQualityRepository.refreshStations().collect {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(application, "Success!", Toast.LENGTH_SHORT).show()
-                    }
+                    Toast.makeText(application, "Success!", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(application, "Not Success!", Toast.LENGTH_SHORT).show()
-                    Timber.d(e.message)
+                Toast.makeText(application, "Not Success!", Toast.LENGTH_SHORT).show()
+                Timber.d(e.message)
+            }
+        }
+    }
+
+    fun refreshAQIs() {
+        viewModelScope.launch {
+            try {
+                airQualityRepository.refreshAQIDescriptions().collect {
+                    Toast.makeText(application, "Success!", Toast.LENGTH_SHORT).show()
                 }
+            } catch (e: Exception) {
+                Toast.makeText(application, "Not Success!", Toast.LENGTH_SHORT).show()
+                Timber.d(e.message)
             }
         }
     }

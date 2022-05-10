@@ -3,7 +3,9 @@ package com.example.dte_2603_prosjekt.repository
 import com.example.dte_2603_prosjekt.domain.model.Response
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -17,7 +19,7 @@ class AuthRepository @Inject constructor(private val authenticator: FirebaseAuth
         } catch (e: Exception) {
             emit(Response.Error(e.message ?: e.toString()))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
     suspend fun signUpWithEmailPassword(email: String, password: String) = flow {
         try {
@@ -27,7 +29,7 @@ class AuthRepository @Inject constructor(private val authenticator: FirebaseAuth
         } catch (e: Exception) {
             emit(Response.Error(e.message ?: e.toString()))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
     fun signOut(): Unit {
         return authenticator.signOut()
@@ -45,6 +47,6 @@ class AuthRepository @Inject constructor(private val authenticator: FirebaseAuth
         } catch (e: Exception) {
             emit(Response.Error(e.message ?: e.toString()))
         }
-    }
+    }.flowOn(Dispatchers.IO)
 
 }

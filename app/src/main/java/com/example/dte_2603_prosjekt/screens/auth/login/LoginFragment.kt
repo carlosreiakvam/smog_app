@@ -8,7 +8,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.dte_2603_prosjekt.R
 import com.example.dte_2603_prosjekt.databinding.FragmentLoginBinding
-import com.example.dte_2603_prosjekt.screens.auth.LoginViewModel
 import com.example.dte_2603_prosjekt.screens.auth.reset_pass.ResetPasswordDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
